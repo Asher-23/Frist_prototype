@@ -1,18 +1,24 @@
+// import the library
 #include "mbed.h"
 #include "arm_book_lib.h"
+
+// define the input  pins 
 
 DigitalIn weighDetector(D2);
 DigitalIn servochange(D3);
 DigitalIn Lcdchange(D4);
 
+// define the output pins
 DigitalOut weighLed(LED1);
 DigitalOut servoLed(LED2);
 DigitalOut LcdLED(LED3);
 
-// State variables for toggling LEDs
+// defining the variables 
 bool weighLedState = false;
 bool lcdLedState = false;
 
+
+// the main loop 
 int main()
 {
     weighDetector.mode(PullDown);
@@ -41,9 +47,9 @@ int main()
            while (servochange.read());
             for (int i = 0; i < 3; i++) {
                 servoLed = ON;
-                thread_sleep_for(500); // LED on for 500ms
+                thread_sleep_for(500); 
                 servoLed = OFF;
-                thread_sleep_for(1000); // Wait 3 seconds
+                thread_sleep_for(1000); 
             }
         }
     }
