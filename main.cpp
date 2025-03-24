@@ -30,19 +30,19 @@ int main()
     LcdLED = OFF;
 
     while (true) {
-       
+       // check the button for the weight sensor 
         if (weighDetector.read()) {
             while (weighDetector.read());
             weighLedState = !weighLedState;
             weighLed = weighLedState;
         }
-     
+     // check the button for lcd input 
         if (Lcdchange.read()) {
             while (Lcdchange.read());
             lcdLedState = !lcdLedState;
             LcdLED = lcdLedState;
         }
-
+// check for the servo input, and flash the led 3 tines. to show that the dog feeding 3 times 
         if (servochange.read()) {
            while (servochange.read());
             for (int i = 0; i < 3; i++) {
